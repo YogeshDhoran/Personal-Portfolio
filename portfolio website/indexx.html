@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yogesh Dhoran - Portfolio</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins&family=Questrial&display=swap" rel="stylesheet" />
+
+    <!-- boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <style>
+        /* Basic CSS reset and styling customized for Yogesh */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #eef2f7;
+            color: #222;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #05445e;
+            color: #a9d6e5;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: #a9d6e5;
+        }
+        #menu-icon {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #a9d6e5;
+            display: none;
+        }
+        .navbar {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .navbar a {
+            color: #a9d6e5;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        .navbar a:hover, .navbar .active {
+            color: #189ab4;
+            border-bottom: 2px solid #189ab4;
+        }
+        .home {
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 3rem 1rem;
+            flex-wrap: wrap;
+            background: #d4f1f4;
+        }
+        .home-content h3, .home-content h1 {
+            font-weight: 600;
+            color: #05445e;
+        }
+        .home-content h3 {
+            font-size: 1.8rem;
+        }
+        .home-content h1 {
+            font-size: 3rem;
+            margin: 0.2rem 0;
+        }
+        .multiple-text {
+            color: #189ab4;
+            font-weight: 700;
+        }
+        .home-content p {
+            max-width: 420px;
+            margin: 1rem 0 1.5rem;
+            font-size: 1.1rem;
+            color: #05445e;
+        }
+        .social-media a {
+            color: #189ab4;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        .social-media a:hover {
+            color: #07575b;
+        }
+        .btn {
+            background-color: #189ab4;
+            color: #fff;
+            display: inline-block;
+            padding: 0.65rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .btn:hover {
+            background-color: #07575b;
+        }
+        .home-img img {
+            max-width: 300px;
+            border-radius: 50%;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        section {
+            padding: 3rem 1rem;
+            max-width: 1000px;
+            margin: 3rem auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+        }
+        h2.heading {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: #05445e;
+        }
+        h2.heading span {
+            color: #189ab4;
+        }
+        .about {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .about-img img {
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 3px 3px 15px rgba(24, 154, 180, 0.3);
+        }
+        .about-content {
+            flex: 1;
+        }
+        .about-content h3 {
+            font-size: 1.8rem;
+            color: #05445e;
+            margin-bottom: 1rem;
+        }
+        .about-content p {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .services-container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .services-box {
+            background: #d4f1f4;
+            padding: 1.5rem 1.2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 15px rgb(24 154 180 / 0.15);
+            width: 280px;
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+        .services-box:hover {
+            transform: translateY(-10px);
+        }
+        .services-box i {
+            font-size: 3rem;
+            color: #05445e;
+            margin-bottom: 1rem;
+        }
+        .services-box h3 {
+            margin-bottom: 1rem;
+            color: #189ab4;
+        }
+        .services-box p {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.4;
+        }
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.5rem;
+        }
+        .portfolio-box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .portfolio-box img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .portfolio-box:hover img {
+            transform: scale(1.12);
+        }
+        .portfolio-layer {
+            position: absolute;
+            bottom: 0;
+            background: rgba(24, 154, 180, 0.85);
+            color: white;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .portfolio-box:hover .portfolio-layer {
+            opacity: 1;
+        }
+        .portfolio-layer h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        .portfolio-layer p {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        .portfolio-layer a {
+            color: white;
+            font-size: 1.4rem;
+            margin-top: 0.7rem;
+            display: inline-block;
+        }
+        .contact form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .input-box {
+            flex: 1 1 45%;
+            display: flex;
+            flex-direction: column;
+        }
+        .input-box input, textarea {
+            padding: 0.8rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: none;
+            outline-color: #189ab4;
+        }
+        textarea {
+            flex: 1 1 100%;
+        }
+        input[type=submit].btn {
+            width: 100%;
+            padding: 1rem 0;
+            background-color: #189ab4;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 15px rgba(24,154,180,0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type=submit].btn:hover {
+            background-color: #05445e;
+        }
+        .footer {
+            background-color: #05445e;
+            color: #a9d6e5;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 4rem;
+        }
+        .footer .footer-iconTap a {
+            color: #a9d6e5;
+            font-size: 1.5rem;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            display: inline-block;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .footer .footer-iconTap a:hover {
+            color: #189ab4;
+        }
+
+
+        @media (max-width: 768px) {
+            #menu-icon {
+                display: block;
+            }
+            .navbar {
+                position: fixed;
+                top: 65px;
+                right: -100%;
+                width: 250px;
+                height: 100%;
+                background-color: #05445e;
+                flex-direction: column;
+                padding-top: 1rem;
+                transition: right 0.3s ease;
+                box-shadow: -1px 0 10px rgba(0,0,0,0.2);
+                z-index: 999;
+            }
+            .navbar.show {
+                right: 0;
+            }
+            .navbar a {
+                color: #a9d6e5;
+                padding: 1rem 1.5rem;
+                font-size: 1.3rem;
+                border-bottom: 1px solid #189ab4;
+                margin: 0;
+            }
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-img img {
+                max-width: 90vw;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <a href="#home" class="logo">Yogesh Dhoran</a>
+        <i class="bx bx-menu" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Skills</a>
+            <a href="#portfolio">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, It's Me</h3>
+            <h1>Yogesh Dhoran</h1>
+            <h3>And I'm a <span class="multiple-text"></span></h3>
+            <p>
+                Self-motivated Computer Science Engineering student with expertise in web development, data science, and software technologies. Eager to apply skills to real-world problems and deliver innovative solutions.
+            </p>
+            <div class="social-media">
+                <a href="https://facebook.com" target="_blank"><i class="bx bxl-facebook"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="bx bxl-twitter"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="bx bxl-instagram"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="bx bxl-youtube"></i></a>
+                <a href="https://linkedin.com/in/yogesh-dhoran" target="_blank"><i class="bx bxl-linkedin"></i></a>
+            </div>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+        <div class="home-img">
+            <img src="images/profile.png" alt="Yogesh Dhoran" />
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="images/about.png" alt="About Yogesh" />
+        </div>
+        <div class="about-content">
+            <h2 class="heading">About <span>Me</span></h2>
+            <h3>Computer Science Engineering Student & Developer</h3>
+            <p>
+                Passionate about coding, software development, and continuous learning. Experienced in frontend development (HTML5, CSS3, JavaScript) and backend frameworks like Node.js and Django. Strong leadership and problem-solving skills demonstrated through academic and internship projects.
+            </p>
+            <a href="#portfolio" class="btn">View My Projects</a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="services" id="services">
+        <h2 class="heading">My <span>Skills</span></h2>
+        <div class="services-container">
+            <div class="services-box">
+                <i class="bx bx-code-alt"></i>
+                <h3>Web Development</h3>
+                <p>Proficient in creating responsive and interactive websites using HTML, CSS, and JavaScript.</p>
+            </div>
+            <div class="services-box">
+                <i class="bx bxs-paint"></i>
+                <h3>Graphic Design</h3>
+                <p>Experience designing logos and graphics for personal and client projects.</p>
+            </div>
+            <div class="services-box">
+                <i class="bx bxs-terminal"></i>
+                <h3>Programming Languages</h3>
+                <p>Skilled in C, C++, Java, and Python to develop efficient solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">My <span>Projects</span></h2>
+        <div class="portfolio-container">
+            <div class="portfolio-box">
+                <img src="images/project1.jpg" alt="OneMealOneSmile" />
+                <div class="portfolio-layer">
+                    <h4>OneMealOneSmile-Feeding Hands</h4>
+                    <p>Fully functional social assistance web app with user roles and real-time DB.</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="images/project2.jpg" alt="BookMart360" />
+                <div class="portfolio-layer">
+                    <h4>BookMart360</h4>
+                    <p>E-commerce platform for books with Admin Dashboard.</p>
+                    <a href="#"><i class="bx bx-link-external"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+        <form method="post" action="mailto:dhoranyogesh500@gmail.com" enctype="text/plain">
+            <div class="input-box">
+                <input type="text" name="name" placeholder="Full Name" required />
+                <input type="email" name="email" placeholder="Email Address" required />
+            </div>
+            <div class="input-box">
+                <input type="tel" name="phone" placeholder="Mobile Number" required pattern="[0-9]{10}" />
+                <input type="text" name="subject" placeholder="Subject" required />
+            </div>
+            <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+            <input type="submit" value="Send Message" class="btn" />
+        </form>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer-text">
+            <p>© 2025 Yogesh Dhoran. Powered by Creativity and Code.</p>
+        </div>
+        <div class="footer-iconTap">
+            <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+        </div>
+    </footer>
+
+    <!-- Scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- typed js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- custom js -->
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.querySelector('.navbar');
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+        });
+
+        // Typed.js for multiple text effect
+        var typed = new Typed('.multiple-text', {
+            strings: ["Web Developer", "Programmer", "Tech Enthusiast", "Learner"],
+            typeSpeed: 100,
+            backSpeed: 60,
+            loop: true
+        });
+
+        // Scroll Reveal animations

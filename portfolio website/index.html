@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yogesh Dhoran - Computer Science Engineer Portfolio</title>
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #f0f0f0;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #00d8ff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #00ffa3;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: #00d8ff;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li {
+      font-weight: 600;
+    }
+    nav ul li a {
+      font-size: 1rem;
+    }
+    main {
+      flex-grow: 1;
+      max-width: 1100px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    /* First section layout with image circle on right */
+    #about {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      margin-bottom: 3rem;
+      color: #ddd;
+    }
+    #about .text-content {
+      flex: 1 1 60%;
+      padding-right: 2rem;
+    }
+    #about h1 {
+      color: #00d8ff;
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #ccc;
+      margin-bottom: 1.5rem;
+    }
+    #about .image-circle {
+      flex: 0 0 180px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #00d8ff;
+      box-shadow: 0 0 20px #00d8ffaa;
+      background: linear-gradient(135deg, #00d8ff, #00ffa3);
+      position: relative;
+      overflow: visible;
+      background-image: url("C:\Users\yoges\Desktop\back one drive files\college\portfolio website\yogesh image.jpg"); /* Use your hosted image or relative path */
+      background-size: cover;
+      background-position: center;
+    }
+    /* Multiple concentric circles */
+    #about .image-circle::before,
+    #about .image-circle::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    #about .image-circle::before {
+      width: 220px;
+      height: 220px;
+      border: 2px solid #00d8ff88;
+      box-shadow: 0 0 15px #00d8ff66;
+      animation: pulse 4s infinite ease-in-out;
+    }
+    #about .image-circle::after {
+      width: 260px;
+      height: 260px;
+      border: 1.5px solid #00ffa388;
+      box-shadow: 0 0 10px #00ffa366;
+      animation: pulse 6s infinite ease-in-out alternate;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.4;
+      }
+    }
+    /* Other sections */
+    section {
+      margin-bottom: 3rem;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      color: #ddd;
+    }
+    h2, h3 {
+      color: #00d8ff;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 2rem;
+      border-bottom: 2px solid #00d8ff;
+      padding-bottom: 0.3rem;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+    }
+    p, li {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    ul.skills-list, ul.projects-list, ul.experience-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul.skills-list li, ul.projects-list li, ul.experience-list li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    ul.skills-list li::before, ul.projects-list li::before, ul.experience-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #00ffa3;
+      font-weight: bold;
+    }
+    .contact-links a {
+      display: inline-block;
+      margin-right: 1.5rem;
+      font-weight: 600;
+      background: #00d8ff;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,216,255,0.4);
+      transition: background 0.3s ease;
+    }
+    .contact-links a:hover {
+      background: #00ffa3;
+      color: #000;
+      box-shadow: 0 6px 12px rgba(0,255,163,0.6);
+    }
+    /* Project cards */
+    .project-card {
+      background: #0a1f44;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(0,255,163,0.7);
+    }
+    .project-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #00ffa3;
+      margin-bottom: 0.3rem;
+    }
+    .project-tech {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: #66ffc7;
+      margin-bottom: 0.6rem;
+    }
+    .project-desc {
+      font-size: 1rem;
+      color: #ccc;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 1rem;
+      }
+      #about {
+        flex-direction: column;
+        text-align: center;
+      }
+      #about .text-content {
+        padding-right: 0;
+        margin-bottom: 2rem;
+      }
+      #about .image-circle {
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+      main {
+        margin: 1rem auto 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Yogesh Dhoran</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- About Section with image circle on right -->
+    <section id="about" aria-label="About Me">
+      <div class="text-content">
+        <h1>Yogesh Dhoran</h1>
+        <p>
+          I am a highly motivated and technically skilled Computer Science Engineering student with practical experience in web development, data science, and Red Hat technologies.
+        </p>
+        <h3>Education</h3>
+        <ul>
+          <li><strong>Bachelor of Engineering - Computer Science Engineering</strong>, Pimpri Chinchwad University (Aug 2024 - July 2027) - CGPA: 8.7</li>
+          <li><strong>Diploma in Computer Science</strong>, Government Polytechnic, Pune (June 2022 - June 2024)</li>
+        </ul>
+      </div>
+      <div class="image-circle" aria-label="Profile Picture">
+        <!-- Image is set via CSS background-image -->
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" aria-label="Skills">
+      <h2>Skills</h2>
+      <h3>Programming Languages</h3>
+      <ul class="skills-list">
+        <li>C, C++</li>
+        <li>Java</li>
+        <li>Python</li>
+      </ul>
+      <h3>Frontend</h3>
+      <ul class="skills-list">
+        <li>HTML5, CSS3, JavaScript</li>
+      </ul>
+      <h3>Backend</h3>
+      <ul class="skills-list">
+        <li>Node.js, Django</li>
+      </ul>
+      <h3>Tools & Technologies</h3>
+      <ul class="skills-list">
+        <li>Git, MySQL, Canva</li>
+        <li>Linux Fundamentals, Operating Systems</li>
+        <li>Red Hat Certifications: RH104, DO101, RH124, RH134</li>
+        <li>Cloud & Data Science: AWS Cloud Learning, Data Engineering Master, Altair DataScience Master</li>
+      </ul>
+      <h3>Soft Skills</h3>
+      <ul class="skills-list">
+        <li>Leadership, Communication, Problem Solving</li>
+        <li>Adaptability, Confidence, Active Listening</li>
+      </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" aria-label="Projects">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <div class="project-title">OneMealOneSmile - Feeding Hands</div>
+        <div class="project-tech">Technologies: HTML, CSS, JavaScript, Backend Database</div>
+        <p class="project-desc">
+          Developed and deployed a fully functional web application aimed at social assistance with three main user roles: User, Volunteer, and Admin. The platform achieved 90% smooth functionality with a user-friendly, interactive UI and a runtime database for real-time data storage and future use. Demonstrates ability to create robust web applications focused on user experience and efficient data management.
+        </p>
+      </div>
+      <div class="project-card">
+        <div class="project-title">BookMart360</div>
+        <div class="project-tech">Technologies: HTML, CSS, JavaScript, MySQL</div>
+        <p class="project-desc">
+          Designed and developed an interactive e-commerce platform for seamless online book buying. Features include browsing and purchasing books, along with a comprehensive Admin Dashboard to streamline inventory and order management. Highlights experience in developing user-centric web applications with smooth functionality.
+        </p>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" aria-label="Work Experience">
+      <h2>Experience</h2>
+      <ul class="experience-list">
+        <li>
+          <strong>Student Intern - Data Science</strong> (June 2023 - August 2023)<br />
+          Completed a Data Science internship covering basic to intermediate concepts with hands-on experience on small projects.
+        </li>
+        <li>
+          <strong>Data Council - Web Development Intern</strong> (June 2023 - August 2023)<br />
+          Learned HTML, CSS, and JavaScript; developed interactive web pages and responsive UI components.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" aria-label="Achievements">
+      <h2>Achievements</h2>
+      <ul>
+        <li>Finalist in DIPEX25 State Level Project Exhibition and Competition</li>
+        <li>Finalist in NASA Space Challenge problem-solving competition</li>
+        <li>Secured 5th place in a National Coding Hackathon</li>
+      </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" aria-label="Contact Information">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out for collaborations, internships, or just to say hello!</p>
+      <div class="contact-links">
+        <a href="mailto:dhoranyogesh500@gmail.com" target="_blank" rel="noopener">Email</a>
+        <a href="https://www.linkedin.com/in/yogesh-dhoran" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/YogeshDhoran" target="_blank" rel="noopener">GitHub</a>
+        <a href="tel:+919561634326">Phone</a>
+      </div>
+    </section>
+  </main>
+
+  <footer style="text-align:center; padding:1rem; background: rgba(0,0,0,0.6); color:#00d8ff;">
+    &copy; 2025 Yogesh Dhoran 
+  </footer>
+</body>
+</html>
